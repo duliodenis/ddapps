@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ddApps — Dulio Denis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ddApps is the independent software studio of Dulio Denis — small, fast, deliberate software built in New York City.">
+
+<link rel="icon" type="image/png" href="img/ddApps.png">
+<link rel="apple-touch-icon" href="img/ddApps.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ddApps">
+<meta property="og:title" content="ddApps — Dulio Denis">
+<meta property="og:description" content="Quiet software, built to last. The independent studio of Dulio Denis — GameZone Arcade, TextStar, and Nimlo, engineered in New York City.">
+<meta property="og:url" content="https://ddapps.co/">
+<meta property="og:image" content="https://ddapps.co/img/ddApps.png">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ddApps — Dulio Denis">
+<meta name="twitter:description" content="Quiet software, built to last. GameZone Arcade, TextStar, and Nimlo — engineered in New York City.">
+<meta name="twitter:image" content="https://ddapps.co/img/ddApps.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+	:root {
+		--bg: #EDF7F6;          /* Azure Mist */
+		--ink: #1A1B1E;
+		--muted: #667170;
+		--hairline: #D7E4E2;
+		--tile: #FFFFFF;
+		--accent: #5F6E1E;      /* olive — accent deepened for light-mode contrast */
+		--accent-soft: rgba(95, 110, 30, 0.12);
+		--shadow: 0 1px 2px rgba(26, 27, 30, 0.04), 0 8px 28px rgba(26, 27, 30, 0.06);
+	}
+
+	/* Dark tokens apply when the system prefers dark (and the user hasn't
+	   forced light), or when the user has forced dark via the toggle. */
+	@media (prefers-color-scheme: dark) {
+		:root:not([data-theme="light"]) {
+			--bg: #141519;
+			--ink: #E9E7E1;
+			--muted: #9B9DA4;
+			--hairline: #292A2F;
+			--tile: #1B1C21;
+			--accent: #C1D473;   /* yellow-green accent, full strength on dark */
+			--accent-soft: rgba(193, 212, 115, 0.14);
+			--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
+		}
+	}
+
+	:root[data-theme="dark"] {
+		--bg: #141519;
+		--ink: #E9E7E1;
+		--muted: #9B9DA4;
+		--hairline: #292A2F;
+		--tile: #1B1C21;
+		--accent: #C1D473;
+		--accent-soft: rgba(193, 212, 115, 0.14);
+		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
+	}
+
+	* { box-sizing: border-box; }
+
+	html { background: var(--bg); }
+
+	body {
+		margin: 0;
+		color: var(--ink);
+		background: var(--bg);
+		font-family: "Newsreader", Georgia, serif;
+		font-size: 19px;
+		line-height: 1.65;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.mono {
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 13px;
+		letter-spacing: 0.04em;
+	}
+
+	a { color: inherit; }
+
+	::selection { background: var(--accent-soft); }
+
+	.wrap {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 0 24px;
+	}
+
+	/* ---------- header ---------- */
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		padding-top: 44px;
+	}
+
+	.wordmark {
+		font-weight: 500;
+		text-decoration: none;
+		color: var(--ink);
+	}
+
+	nav a {
+		color: var(--muted);
+		text-decoration: none;
+		margin-left: 20px;
+		transition: color 120ms ease;
+	}
+
+	nav a:hover, nav a:focus-visible { color: var(--accent); }
+
+	nav {
+		display: flex;
+		align-items: center;
+	}
+
+	.theme-toggle {
+		background: none;
+		border: none;
+		padding: 4px;
+		margin-left: 20px;
+		cursor: pointer;
+		color: var(--muted);
+		display: inline-flex;
+		align-items: center;
+		transition: color 120ms ease;
+	}
+
+	.theme-toggle:hover, .theme-toggle:focus-visible { color: var(--accent); }
+
+	.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+	.theme-toggle svg { width: 16px; height: 16px; display: block; }
+
+	/* Show the icon for the theme you'd switch TO:
+	   moon in light mode, sun in dark mode. */
+	.icon-sun { display: none; }
+	.icon-moon { display: block; }
+
+	@media (prefers-color-scheme: dark) {
+		:root:not([data-theme="light"]) .icon-moon { display: none; }
+		:root:not([data-theme="light"]) .icon-sun { display: block; }
+	}
+
+	:root[data-theme="dark"] .icon-moon { display: none; }
+	:root[data-theme="dark"] .icon-sun { display: block; }
+
+	:root[data-theme="light"] .icon-moon { display: block; }
+	:root[data-theme="light"] .icon-sun { display: none; }
+
+	/* ---------- hero ---------- */
+
+	.hero { padding: 110px 0 72px; }
+
+	.hero h1 {
+		font-size: clamp(38px, 7vw, 56px);
+		font-weight: 400;
+		line-height: 1.12;
+		margin: 0 0 28px;
+		letter-spacing: -0.01em;
+	}
+
+	.hero h1 em {
+		font-style: italic;
+		font-weight: 400;
+	}
+
+	.caret {
+		display: inline-block;
+		width: 3px;
+		height: 0.85em;
+		margin-left: 6px;
+		background: var(--accent);
+		vertical-align: baseline;
+		transform: translateY(0.12em);
+		animation: blink 1.1s steps(1) infinite;
+	}
+
+	@keyframes blink { 50% { opacity: 0; } }
+
+	@media (prefers-reduced-motion: reduce) {
+		.caret { animation: none; }
+	}
+
+	.hero p {
+		max-width: 58ch;
+		margin: 0;
+		color: var(--muted);
+	}
+
+	.hero p b {
+		color: var(--ink);
+		font-weight: 500;
+	}
+
+	/* ---------- section labels ---------- */
+
+	.label {
+		color: var(--muted);
+		text-transform: uppercase;
+		margin: 0 0 26px;
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+
+	.label::after {
+		content: "";
+		flex: 1;
+		height: 1px;
+		background: var(--hairline);
+	}
+
+	/* ---------- project tiles ---------- */
+
+	.projects { padding: 24px 0 40px; }
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+	}
+
+	@media (max-width: 640px) {
+		.grid { grid-template-columns: 1fr; }
+	}
+
+	.tile {
+		font: inherit;
+		text-align: left;
+		color: inherit;
+		background: var(--tile);
+		border: 1px solid var(--hairline);
+		border-radius: 10px;
+		padding: 24px 22px 20px;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		min-height: 180px;
+		transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+	}
+
+	.tile:hover, .tile:focus-visible {
+		border-color: var(--accent);
+		box-shadow: var(--shadow);
+		transform: translateY(-2px);
+	}
+
+	.tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+	/* ---------- tile reveal ---------- */
+
+	.tile.reveal {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+
+	.tile.reveal.in {
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 600ms ease var(--delay, 0ms),
+			transform 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms),
+			border-color 140ms ease,
+			box-shadow 140ms ease;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tile, .tile:hover { transform: none; transition: none; }
+		.tile.reveal { opacity: 1; transform: none; }
+	}
+
+	.tile .domain { color: var(--muted); }
+
+	.tile h2 {
+		font-size: 26px;
+		font-weight: 500;
+		margin: 2px 0 0;
+		line-height: 1.2;
+	}
+
+	.tile .tag {
+		color: var(--muted);
+		font-size: 17px;
+		margin: 0;
+		flex: 1;
+	}
+
+	.tile .open {
+		color: var(--accent);
+		margin-top: 10px;
+	}
+
+	/* ---------- dialog ---------- */
+
+	dialog {
+		border: 1px solid var(--hairline);
+		border-radius: 14px;
+		background: var(--tile);
+		color: var(--ink);
+		padding: 36px;
+		max-width: 480px;
+		width: calc(100vw - 48px);
+		box-shadow: var(--shadow);
+	}
+
+	dialog::backdrop {
+		background: rgba(10, 10, 12, 0.45);
+		backdrop-filter: blur(3px);
+	}
+
+	dialog .domain { color: var(--muted); }
+
+	dialog h2 {
+		font-size: 30px;
+		font-weight: 500;
+		margin: 6px 0 14px;
+		line-height: 1.15;
+	}
+
+	dialog p {
+		margin: 0 0 26px;
+		color: var(--muted);
+		font-size: 18px;
+	}
+
+	.dialog-actions {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	.visit {
+		display: inline-block;
+		text-decoration: none;
+		color: var(--bg);
+		background: var(--ink);
+		padding: 10px 18px;
+		border-radius: 8px;
+		transition: background 120ms ease;
+	}
+
+	.visit:hover, .visit:focus-visible { background: var(--accent); color: #fff; }
+
+	.close {
+		font: inherit;
+		background: none;
+		border: none;
+		color: var(--muted);
+		cursor: pointer;
+		padding: 10px 6px;
+	}
+
+	.close:hover, .close:focus-visible { color: var(--ink); }
+
+	/* ---------- footer ---------- */
+
+	footer {
+		border-top: 1px solid var(--hairline);
+		margin-top: 64px;
+		padding: 28px 0 48px;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 12px;
+		color: var(--muted);
+	}
+
+	footer a {
+		color: var(--muted);
+		text-decoration: none;
+		margin-right: 20px;
+		transition: color 120ms ease;
+	}
+
+	footer a:hover, footer a:focus-visible { color: var(--accent); }
+</style>
+
+<script>
+	// Apply any saved theme immediately, before first paint, to avoid a flash.
+	(function () {
+		try {
+			var saved = localStorage.getItem("theme");
+			if (saved === "light" || saved === "dark") {
+				document.documentElement.dataset.theme = saved;
+			}
+		} catch (e) { /* storage unavailable — fall back to system preference */ }
+	})();
+</script>
+</head>
+<body>
+
+<div class="wrap">
+
+	<header>
+		<a class="wordmark mono" href="/">ddApps</a>
+		<nav class="mono">
+			<button class="theme-toggle" id="theme-toggle" aria-label="Switch between light and dark mode" title="Switch theme">
+				<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+				</svg>
+				<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<circle cx="12" cy="12" r="4"></circle>
+					<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+				</svg>
+			</button>
+			<a href="https://github.com/duliodenis">GitHub</a>
+			<a href="https://www.linkedin.com/in/duliodenis">LinkedIn</a>
+		</nav>
+	</header>
+
+	<section class="hero">
+		<h1>Quiet software,<br><em>built to last</em><span class="caret" aria-hidden="true"></span></h1>
+		<p>
+			ddApps is the independent studio of <b>Dulio Denis</b>, a software engineer
+			in New York City. After a decade of designing and shipping iOS apps, first
+			in Objective-C then Swift, the work today is faster and more deliberate.
+			Products engineered mostly in <b>Zig</b>, and built around a simple
+			philosophy: software should respect your attention.
+		</p>
+	</section>
+
+	<section class="projects">
+		<p class="label mono">Selected work</p>
+		<div class="grid">
+
+			<button class="tile" data-dialog="dlg-gamezone">
+				<span class="domain mono">gamezonearcade.com</span>
+				<h2>GameZone Arcade</h2>
+				<p class="tag">Free retro games, right in the browser.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
+			<button class="tile" data-dialog="dlg-textstar">
+				<span class="domain mono">gettextstar.com</span>
+				<h2>TextStar</h2>
+				<p class="tag">A quiet editor for serious writing.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
+			<button class="tile" data-dialog="dlg-nimlo">
+				<span class="domain mono">nimlo.org</span>
+				<h2>Nimlo</h2>
+				<p class="tag">An open-source browser for a quieter web.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
+		</div>
+	</section>
+
+	<footer class="mono">
+		<span>
+			<a href="https://github.com/duliodenis">GitHub</a>
+			<a href="https://www.linkedin.com/in/duliodenis">LinkedIn</a>
+		</span>
+		<span>© 2026 ddApps · New York City</span>
+	</footer>
+
+</div>
+
+<!-- ---------- dialogs ---------- -->
+
+<dialog id="dlg-gamezone" aria-labelledby="dlg-gamezone-title">
+	<span class="domain mono">gamezonearcade.com</span>
+	<h2 id="dlg-gamezone-title">GameZone Arcade</h2>
+	<p>
+		A growing arcade of free retro games that run right in the browser.
+		No installs, no accounts, no ads chasing you around. Open a tab and
+		press start. Built for the pure joy of play, the way the web used to feel.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://gamezonearcade.com/" target="_blank" rel="noopener">Visit site ↗</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
+
+<dialog id="dlg-textstar" aria-labelledby="dlg-textstar-title">
+	<span class="domain mono">gettextstar.com</span>
+	<h2 id="dlg-textstar-title">TextStar</h2>
+	<p>
+		A quiet editor for serious writing. TextStar clears away everything
+		between you and the page. No clutter, no noise, no distractions.
+		Just a calm, focused space designed for people who write for real.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://gettextstar.com/" target="_blank" rel="noopener">Visit site ↗</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
+
+<dialog id="dlg-nimlo" aria-labelledby="dlg-nimlo-title">
+	<span class="domain mono">nimlo.org</span>
+	<h2 id="dlg-nimlo-title">Nimlo</h2>
+	<p>
+		Browse lightly. Nimlo is an open-source browser engineered in Zig for
+		performance, privacy, local control, and AI-free browsing. No telemetry,
+		no forced accounts, no corporate clutter. The web the way it used to be.
+		Experimental builds are available now for Apple Silicon Macs.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://nimlo.org/" target="_blank" rel="noopener">Visit site ↗</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
+
+<script>
+	// Light/dark toggle: starts on the system preference, then remembers the choice
+	(function () {
+		var root = document.documentElement;
+		var toggle = document.getElementById("theme-toggle");
+
+		function effectiveTheme() {
+			if (root.dataset.theme) return root.dataset.theme;
+			return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+		}
+
+		toggle.addEventListener("click", function () {
+			var next = effectiveTheme() === "dark" ? "light" : "dark";
+			root.dataset.theme = next;
+			try { localStorage.setItem("theme", next); } catch (e) { /* session-only */ }
+		});
+	})();
+
+	// Staggered reveal of the project tiles when they enter the viewport
+	(function () {
+		var tiles = document.querySelectorAll(".tile");
+		var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+		if (!reduced && "IntersectionObserver" in window) {
+			tiles.forEach(function (tile, i) {
+				tile.classList.add("reveal");
+				tile.style.setProperty("--delay", (i * 110) + "ms");
+			});
+
+			var observer = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("in");
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.15 });
+
+			tiles.forEach(function (tile) { observer.observe(tile); });
+		}
+	})();
+
+	// Open the matching dialog when a tile is clicked
+	document.querySelectorAll(".tile").forEach(function (tile) {
+		tile.addEventListener("click", function () {
+			document.getElementById(tile.dataset.dialog).showModal();
+		});
+	});
+
+	// Close buttons
+	document.querySelectorAll("[data-close]").forEach(function (btn) {
+		btn.addEventListener("click", function () {
+			btn.closest("dialog").close();
+		});
+	});
+
+	// Click on the backdrop closes the dialog
+	document.querySelectorAll("dialog").forEach(function (dlg) {
+		dlg.addEventListener("click", function (e) {
+			if (e.target === dlg) dlg.close();
+		});
+	});
+</script>
+
+</body>
+</html>
