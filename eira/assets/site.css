@@ -189,10 +189,6 @@ a {
   font-size: 13px !important;
 }
 
-.nav-cta-soon {
-  cursor: default;
-}
-
 .menu-button {
   width: 44px;
   height: 44px;
@@ -289,10 +285,6 @@ a {
   color: var(--white);
   line-height: 1.05;
   text-decoration: none;
-}
-
-.store-button-soon {
-  cursor: default;
 }
 
 .store-kicker {
