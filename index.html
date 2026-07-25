@@ -13,14 +13,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ddApps">
 <meta property="og:title" content="ddApps — Dulio Denis">
-<meta property="og:description" content="Quiet software, built to last. The independent studio of Dulio Denis — GameZone Arcade, TextStar, and Nimlo, engineered in New York City.">
+<meta property="og:description" content="Quiet software, built to last. The independent studio of Dulio Denis — GameZone Arcade, TextStar, Nimlo, Eira, and Jix, engineered in New York City.">
 <meta property="og:url" content="https://ddapps.co/">
 <meta property="og:image" content="https://ddapps.co/img/ddApps.png">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddApps — Dulio Denis">
-<meta name="twitter:description" content="Quiet software, built to last. GameZone Arcade, TextStar, and Nimlo — engineered in New York City.">
+<meta name="twitter:description" content="Quiet software, built to last. GameZone Arcade, TextStar, Nimlo, Eira, and Jix — engineered in New York City.">
 <meta name="twitter:image" content="https://ddapps.co/img/ddApps.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,12 +226,18 @@
 
 	.grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(6, 1fr);
 		gap: 16px;
 	}
 
+	.tile { grid-column: span 2; }
+
+	.tile:nth-child(-n + 2) { grid-column: span 3; }
+
 	@media (max-width: 640px) {
 		.grid { grid-template-columns: 1fr; }
+		.tile,
+		.tile:nth-child(-n + 2) { grid-column: auto; }
 	}
 
 	.tile {
@@ -281,6 +287,18 @@
 	}
 
 	.tile .domain { color: var(--muted); }
+
+	.tile-meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.status {
+		color: var(--accent);
+		white-space: nowrap;
+	}
 
 	.tile h2 {
 		font-size: 26px;
@@ -340,6 +358,26 @@
 		justify-content: space-between;
 		gap: 16px;
 	}
+
+	.dialog-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	.store-link {
+		flex: none;
+		color: var(--bg);
+		background: var(--ink);
+		padding: 6px 10px;
+		border-radius: 6px;
+		text-decoration: none;
+		transition: background 120ms ease;
+	}
+
+	.store-link:hover,
+	.store-link:focus-visible { background: var(--accent); color: #fff; }
 
 	.visit {
 		display: inline-block;
@@ -435,6 +473,26 @@
 		<p class="label mono">Selected work</p>
 		<div class="grid">
 
+			<button class="tile" data-dialog="dlg-eira">
+				<span class="tile-meta">
+					<span class="domain mono">ddapps.co/eira</span>
+					<span class="status mono">App Store</span>
+				</span>
+				<h2>Eira</h2>
+				<p class="tag">Private, on-device AI for iPhone.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
+			<button class="tile" data-dialog="dlg-jix">
+				<span class="tile-meta">
+					<span class="domain mono">ddapps.co/jix</span>
+					<span class="status mono">Coming soon</span>
+				</span>
+				<h2>Jix</h2>
+				<p class="tag">The daily word jumble for iPhone.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
 			<button class="tile" data-dialog="dlg-gamezone">
 				<span class="domain mono">gamezonearcade.com</span>
 				<h2>GameZone Arcade</h2>
@@ -510,6 +568,36 @@
 	</p>
 	<div class="dialog-actions">
 		<a class="visit mono" href="https://nimlo.org/" target="_blank" rel="noopener">Visit site ↗</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
+
+<dialog id="dlg-eira" aria-labelledby="dlg-eira-title">
+	<div class="dialog-top">
+		<span class="domain mono">Available on the App Store</span>
+		<a class="store-link mono" href="https://apps.apple.com/us/app/eira-private-ai-chat/id6789440571" target="_blank" rel="noopener">App Store ↗</a>
+	</div>
+	<h2 id="dlg-eira-title">Eira</h2>
+	<p>
+		A private AI assistant for iPhone, powered on device by a local LLM.
+		No account, API key, network, or third-party AI server required. Your conversations
+		stay on your device.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://ddapps.co/eira/">Visit site →</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
+
+<dialog id="dlg-jix" aria-labelledby="dlg-jix-title">
+	<span class="domain mono">Coming soon to the App Store</span>
+	<h2 id="dlg-jix-title">Jix</h2>
+	<p>
+		Unscramble, think, and win every day. Jix is an iPhone word jumble with
+		four quick rounds, instant tile feedback, streaks, and one final word to crack.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://ddapps.co/jix/">Visit site →</a>
 		<button class="close mono" data-close>Close</button>
 	</div>
 </dialog>
