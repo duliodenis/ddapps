@@ -180,11 +180,6 @@ button { color: inherit; font: inherit; }
   border-color: rgba(47, 208, 140, 0.6);
   box-shadow: 0 0 36px -6px rgba(47, 208, 140, 0.5);
 }
-.store-btn--disabled { cursor: default; }
-.store-btn--disabled:hover {
-  border-color: rgba(47, 208, 140, 0.3);
-  box-shadow: none;
-}
 .store-btn svg { width: 28px; height: 28px; color: var(--emerald); flex: none; }
 .store-btn .small { display: block; font-size: 11px; font-weight: 600; color: var(--muted); line-height: 1.1; }
 .store-btn .big { display: block; font-size: 18px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
