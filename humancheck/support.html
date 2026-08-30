@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#faf8f6" />
+  <title>Support | HumanCheck</title>
+  <meta name="description" content="Get help pairing, verifying HumanCodes, protecting the app, and managing local HumanCheck relationships." />
+  <link rel="icon" href="humancheck-favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/humancheck-favicon-64.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="hc-legal-page">
+  <a class="hc-skip-link" href="#main-content">Skip to content</a>
+  <header class="hc-nav">
+    <a class="hc-brand" href="index.html" aria-label="HumanCheck home">HumanCheck</a>
+    <nav class="hc-nav-links" aria-label="Primary navigation">
+      <a href="index.html#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="support.html" aria-current="page">Support</a>
+    </nav>
+    <details class="hc-mobile-menu">
+      <summary aria-label="Open navigation menu"><span class="hc-menu-icon" aria-hidden="true"><i></i><i></i><i></i></span></summary>
+      <nav aria-label="Mobile navigation">
+        <a href="index.html#how">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html" aria-current="page">Support</a>
+      </nav>
+    </details>
+    <span class="hc-button hc-button-nav hc-coming-soon" aria-label="HumanCheck is coming soon">Coming Soon</span>
+  </header>
+
+  <main class="hc-content-page" id="main-content">
+    <header class="hc-page-hero">
+      <p class="hc-badge">Support</p>
+      <h1>How can we help?</h1>
+      <p>Answers to common HumanCheck questions, with a human available by email when you need more help.</p>
+    </header>
+
+    <section class="hc-contact-card" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Talk to a human</h2>
+        <p>Tell us what happened and include your iPhone model, iOS version, and HumanCheck version when reporting a problem.</p>
+      </div>
+      <a class="hc-button hc-email-button" href="mailto:ddappshelp@proton.me">ddappshelp@proton.me</a>
+    </section>
+
+    <section class="hc-support-section" aria-labelledby="questions-title">
+      <h2 id="questions-title">Common questions</h2>
+      <div class="hc-support-faq">
+        <details class="hc-qa">
+          <summary>How do I pair with someone?<span aria-hidden="true">+</span></summary>
+          <p>Meet or speak privately with someone you already trust. On both iPhones, add a Human using an equivalent Secret on the same local calendar date. Choose different HumanCodes, read both codes aloud, and confirm that each phone shows the corresponding pair.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>Why do the codes not match during setup?<span aria-hidden="true">+</span></summary>
+          <p>Confirm that both people used an equivalent Secret on the same local calendar date, selected different HumanCodes, and have automatic date and time enabled. If setup still differs, cancel it and begin again with a new Secret.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>Why is an iPhone passcode required?<span aria-hidden="true">+</span></summary>
+          <p>HumanCheck stores each relationship key using device-bound Keychain protection that requires an enabled device passcode. The relationship cannot be saved without that protection.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>Why do our HumanCodes differ later?<span aria-hidden="true">+</span></summary>
+          <p>Both iPhones need reasonably synchronized clocks and the original saved relationship. Turn on automatic date and time in iOS Settings. If a relationship key is unavailable, remove that Human and pair again privately.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>Can I move my Humans to a new iPhone?<span aria-hidden="true">+</span></summary>
+          <p>HumanCheck 1.0 has no cloud synchronization or recovery. Relationship keys are bound to the original device and do not migrate to a replacement iPhone. Pair again on the new device.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>How do I protect HumanCheck with Face ID?<span aria-hidden="true">+</span></summary>
+          <p>Open HumanCheck Settings and enable app protection. iOS will use Face ID, Touch ID, or your device passcode. HumanCheck never receives or stores your biometric data.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>How do I remove a pairing?<span aria-hidden="true">+</span></summary>
+          <p>Open the Human, tap the delete button, and confirm. This removes that relationship's local metadata and Keychain key from your iPhone. It does not remotely change the other person's device.</p>
+        </details>
+        <details class="hc-qa">
+          <summary>How do I report a bug or suggest a feature?<span aria-hidden="true">+</span></summary>
+          <p>Email <a href="mailto:ddappshelp@proton.me">ddappshelp@proton.me</a>. A short description and screenshot help. Do not include a pairing Secret, relationship key, or active HumanCode.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hc-footer">
+    <p>&copy; 2026 Dulio Denis / Built for iPhone.</p>
+    <nav aria-label="Footer navigation"><a href="privacy.html">Privacy</a><a href="support.html">Support</a></nav>
+  </footer>
+</body>
+</html>
