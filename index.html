@@ -197,9 +197,31 @@
 		color: var(--muted);
 	}
 
+	.hero-intro {
+		display: flex;
+		align-items: flex-start;
+		gap: 28px;
+	}
+
+	.hero-intro p { flex: 1; }
+
+	.hero-profile {
+		width: 112px;
+		height: 112px;
+		flex: 0 0 112px;
+		object-fit: cover;
+		border: 1px solid var(--hairline);
+		border-radius: 50%;
+	}
+
 	.hero p b {
 		color: var(--ink);
 		font-weight: 500;
+	}
+
+	@media (max-width: 520px) {
+		.hero-intro { flex-direction: column-reverse; gap: 22px; }
+		.hero-profile { width: 96px; height: 96px; flex-basis: 96px; }
 	}
 
 	/* ---------- section labels ---------- */
@@ -463,13 +485,16 @@
 
 	<section class="hero">
 		<h1>Privacy-oriented software,<br><em>built to last</em><span class="caret" aria-hidden="true"></span></h1>
-		<p>
-			ddApps is the independent studio of <b>Dulio Denis</b>, a software engineer
-			in New York City. After a decade of designing and shipping iOS apps, first
-			in Objective-C then Swift, the work today is accelerating and more deliberate.
-			Products engineered in <b>SwiftUI</b> and <b>Zig</b>, and built around a simple
-			philosophy: software needs to respect your attention.
-		</p>
+		<div class="hero-intro">
+			<p>
+				ddApps is the independent studio of <b>Dulio Denis</b>, a software engineer
+				in New York City. After a decade of designing and shipping iOS apps, first
+				in Objective-C then Swift, the work today is accelerating and more deliberate.
+				Products engineered in <b>SwiftUI</b> and <b>Zig</b>, and built around a simple
+				philosophy: software needs to give you super-powers, respect your attention, and protect your privacy.
+			</p>
+			<img class="hero-profile" src="img/dd-profile-no-background.png" alt="Dulio Denis" width="512" height="512">
+		</div>
 	</section>
 
 	<section class="projects">
