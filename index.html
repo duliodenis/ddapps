@@ -13,14 +13,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ddApps">
 <meta property="og:title" content="ddApps — Dulio Denis">
-<meta property="og:description" content="Quiet software, built to last. The independent studio of Dulio Denis — GameZone Arcade, TextStar, Nimlo, Eira, and Jix, engineered in New York City.">
+<meta property="og:description" content="Privacy-oriented software, built to last. The independent studio of Dulio Denis — HumanCheck, Eira, Jix, GameZone Arcade, TextStar, and Nimlo, engineered in New York City.">
 <meta property="og:url" content="https://ddapps.co/">
 <meta property="og:image" content="https://ddapps.co/img/ddApps.png">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddApps — Dulio Denis">
-<meta name="twitter:description" content="Quiet software, built to last. GameZone Arcade, TextStar, Nimlo, Eira, and Jix — engineered in New York City.">
+<meta name="twitter:description" content="Privacy-oriented software, built to last. HumanCheck, Eira, Jix, GameZone Arcade, TextStar, and Nimlo — engineered in New York City.">
 <meta name="twitter:image" content="https://ddapps.co/img/ddApps.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -232,12 +232,15 @@
 
 	.tile { grid-column: span 2; }
 
-	.tile:nth-child(-n + 2) { grid-column: span 3; }
+	.tile-featured { grid-column: 1 / -1; }
+
+	.tile-primary { grid-column: span 3; }
 
 	@media (max-width: 640px) {
 		.grid { grid-template-columns: 1fr; }
 		.tile,
-		.tile:nth-child(-n + 2) { grid-column: auto; }
+		.tile-featured,
+		.tile-primary { grid-column: auto; }
 	}
 
 	.tile {
@@ -459,13 +462,13 @@
 	</header>
 
 	<section class="hero">
-		<h1>Quiet software,<br><em>built to last</em><span class="caret" aria-hidden="true"></span></h1>
+		<h1>Privacy-oriented software,<br><em>built to last</em><span class="caret" aria-hidden="true"></span></h1>
 		<p>
 			ddApps is the independent studio of <b>Dulio Denis</b>, a software engineer
 			in New York City. After a decade of designing and shipping iOS apps, first
-			in Objective-C then Swift, the work today is faster and more deliberate.
-			Products engineered mostly in <b>Zig</b>, and built around a simple
-			philosophy: software should respect your attention.
+			in Objective-C then Swift, the work today is accelerating and more deliberate.
+			Products engineered in <b>SwiftUI</b> and <b>Zig</b>, and built around a simple
+			philosophy: software needs to respect your attention.
 		</p>
 	</section>
 
@@ -473,7 +476,17 @@
 		<p class="label mono">Selected work</p>
 		<div class="grid">
 
-			<button class="tile" data-dialog="dlg-eira">
+			<button class="tile tile-featured" data-dialog="dlg-humancheck">
+				<span class="tile-meta">
+					<span class="domain mono">ddapps.co/humancheck</span>
+					<span class="status mono">Coming Soon</span>
+				</span>
+				<h2>HumanCheck</h2>
+				<p class="tag">Two-factor authentication for your friends to make sure it&rsquo;s really them.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
+			<button class="tile tile-primary" data-dialog="dlg-eira">
 				<span class="tile-meta">
 					<span class="domain mono">ddapps.co/eira</span>
 					<span class="status mono">App Store</span>
@@ -483,7 +496,7 @@
 				<span class="open mono">Read more →</span>
 			</button>
 
-			<button class="tile" data-dialog="dlg-jix">
+			<button class="tile tile-primary" data-dialog="dlg-jix">
 				<span class="tile-meta">
 					<span class="domain mono">ddapps.co/jix</span>
 					<span class="status mono">App Store</span>
@@ -503,14 +516,14 @@
 			<button class="tile" data-dialog="dlg-textstar">
 				<span class="domain mono">gettextstar.com</span>
 				<h2>TextStar</h2>
-				<p class="tag">A quiet editor for serious writing.</p>
+				<p class="tag">A simple editor for serious writing.</p>
 				<span class="open mono">Read more →</span>
 			</button>
 
 			<button class="tile" data-dialog="dlg-nimlo">
 				<span class="domain mono">nimlo.org</span>
 				<h2>Nimlo</h2>
-				<p class="tag">An open-source browser for a quieter web.</p>
+				<p class="tag">An open-source browser for a private web.</p>
 				<span class="open mono">Read more →</span>
 			</button>
 
@@ -528,6 +541,22 @@
 </div>
 
 <!-- ---------- dialogs ---------- -->
+
+<dialog id="dlg-humancheck" aria-labelledby="dlg-humancheck-title">
+	<div class="dialog-top">
+		<span class="domain mono">Coming Soon</span>
+	</div>
+	<h2 id="dlg-humancheck-title">HumanCheck</h2>
+	<p>
+		Verify that the friends and family you&rsquo;re communicating with are really
+		who they say they are. HumanCheck pairs two people through a shared,
+		time-limited HumanCode. One human checking another.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://ddapps.co/humancheck/">Visit site →</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
 
 <dialog id="dlg-gamezone" aria-labelledby="dlg-gamezone-title">
 	<span class="domain mono">gamezonearcade.com</span>
@@ -547,7 +576,7 @@
 	<span class="domain mono">gettextstar.com</span>
 	<h2 id="dlg-textstar-title">TextStar</h2>
 	<p>
-		A quiet editor for serious writing. TextStar clears away everything
+		A simple editor for serious writing. TextStar clears away everything
 		between you and the page. No clutter, no noise, no distractions.
 		Just a calm, focused space designed for people who write for real.
 	</p>
