@@ -151,16 +151,6 @@ a {
   transform: scale(0.98);
 }
 
-.hc-coming-soon {
-  cursor: default;
-  user-select: none;
-}
-
-.hc-coming-soon:hover,
-.hc-coming-soon:active {
-  transform: none;
-}
-
 .hc-button-nav {
   justify-self: end;
   min-width: clamp(10rem, 13vw, 15.5rem);
