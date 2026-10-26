@@ -74,9 +74,10 @@ function prepareContext(messages) {
   }
 }
 
-export async function generateReply(messages, { onToken, onFinish, onContextTrim, signal } = {}) {
+export async function generateReply(messages, { onToken, onFinish, onContextTrim, signal, temperature = GENERATION_SETTINGS.temperature } = {}) {
   if (!isModelReady()) throw new Error("Load the model before generating a response.");
   if (generating) throw new Error("A response is already being generated.");
+  if (!Number.isFinite(temperature) || temperature <= 0 || temperature > 1) throw new Error("Temperature must be greater than zero and at most one.");
   signal?.throwIfAborted();
   generating = true;
   let active = true, timer, abort, stopping;
@@ -97,7 +98,7 @@ export async function generateReply(messages, { onToken, onFinish, onContextTrim
       if (signal?.aborted) abort();
     });
     const output = await Promise.race([
-      model.generate({ ...input, ...GENERATION_SETTINGS, streamer, stopping_criteria: criteria }),
+      model.generate({ ...input, ...GENERATION_SETTINGS, temperature, streamer, stopping_criteria: criteria }),
       interruption,
     ]);
     if (!active) throw restartError("Generation was interrupted.");

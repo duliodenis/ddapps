@@ -1,7 +1,9 @@
-import { checkSupport, loadModel, generateReply } from "./model.js";
+import { checkSupport, loadModel } from "./model.js";
+import { generateResponse } from "./reply.js";
 import { Conversation } from "./chat.js";
 import { DEFAULT_VARIANT, getModel } from "./models.js";
-import { CHAT_SYSTEM_PROMPT } from "./instructions.js";
+import { renderMarkdown } from "./markdown.js";
+import { characterInstructions } from "./personality.js";
 
 const $ = (id) => document.getElementById(id);
 const loadButton = $("load");
@@ -91,7 +93,8 @@ function renderMessage(role, content, timestamp) {
   heading.append(name, time);
   const body = document.createElement("div");
   body.className = "message-body";
-  body.textContent = content;
+  if (role === "assistant") renderMarkdown(body, content);
+  else body.textContent = content;
   const note = document.createElement("p");
   note.className = "message-state";
   article.append(heading, body, note);
@@ -161,9 +164,10 @@ prompt.addEventListener("input", () => {
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!["ready", "error"].includes(state) || mustRestart || !prompt.value.trim()) return;
-  let request;
+  let request, instructions;
   try {
-    request = conversation.begin(prompt.value, { systemPrompt: CHAT_SYSTEM_PROMPT });
+    instructions = characterInstructions(prompt.value, conversation.history);
+    request = conversation.begin(prompt.value, instructions);
   } catch (error) {
     showError(error);
     return;
@@ -175,19 +179,19 @@ form.addEventListener("submit", async (event) => {
   followLatest = true;
   const reply = renderConversation();
   updateScroll();
-  setState("generating", "Generating locally…");
+  setState("generating", instructions.mode === "self" ? "ChatChap is replying…" : "Generating locally…");
   const started = performance.now();
   let firstToken;
   let truncated = false;
   try {
-    const answer = await generateReply(request.messages, { onToken(token) {
+    const { text: answer } = await generateResponse(request.messages, { character: instructions.mode === "character", selfCharacter: instructions.mode === "self", onToken(token) {
       firstToken ??= performance.now();
       conversation.append(token);
-      reply.body.textContent = conversation.pending.partial;
+      renderMarkdown(reply.body, conversation.pending.partial);
       updateScroll();
     }, onContextTrim() { $("context-notice").hidden = false; }, onFinish({ finishReason }) { truncated = finishReason === "length"; } });
     conversation.complete(answer, { truncated });
-    reply.body.textContent = answer;
+    renderMarkdown(reply.body, answer);
     reply.note.textContent = truncated ? "Reply reached the length limit. Ask a follow-up to continue." : "";
     prompt.value = "";
     setState("ready", `${getModel(variant).name} · Ready · on-device`);

@@ -1,6 +1,8 @@
 // Lightweight UTF-8 prefilter for bounded requests; the model adapter then
 // counts the actual Liquid template tokens and trims whole older exchanges.
-const CONTEXT_BUDGET = 3200;
+// Allows room for character/style guidance; actual template remains capped at
+// 2,048 tokens by model.js. This byte bound is not a token estimate.
+export const CONTEXT_BUDGET = 6000;
 const encoder = new TextEncoder();
 const cost = (message) => encoder.encode(message.content).length + 32;
 
