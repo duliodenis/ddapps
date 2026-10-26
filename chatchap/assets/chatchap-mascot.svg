@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="400" height="480" role="img" aria-labelledby="ccTitle ccDesc">
+  <title id="ccTitle">ChatChap</title>
+  <desc id="ccDesc">A cream-enamelled gentleman robot with copper-rimmed eyes and a copper bow tie.</desc>
+  <defs>
+    <linearGradient id="ccCream" x1="0.1" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#FCF5E7"/>
+      <stop offset="0.55" stop-color="#EFE3CD"/>
+      <stop offset="1" stop-color="#D9C9AD"/>
+    </linearGradient>
+    <linearGradient id="ccCreamBody" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#F8EFDF"/>
+      <stop offset="0.6" stop-color="#E8DBC4"/>
+      <stop offset="1" stop-color="#CFBFA4"/>
+    </linearGradient>
+    <linearGradient id="ccCopper" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#EDB58B"/>
+      <stop offset="0.45" stop-color="#C97A4A"/>
+      <stop offset="1" stop-color="#97522E"/>
+    </linearGradient>
+    <linearGradient id="ccFace" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#18273E"/>
+      <stop offset="1" stop-color="#070E19"/>
+    </linearGradient>
+    <linearGradient id="ccPanel" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#172640"/>
+      <stop offset="1" stop-color="#0A1322"/>
+    </linearGradient>
+    <radialGradient id="ccIris" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#FFD6B4"/>
+      <stop offset="0.5" stop-color="#D98751"/>
+      <stop offset="1" stop-color="#8A4525"/>
+    </radialGradient>
+    <radialGradient id="ccLamp" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#FFE1C4"/>
+      <stop offset="1" stop-color="#C97A4A"/>
+    </radialGradient>
+    <radialGradient id="ccFloor" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#C97A4A" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#C97A4A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="200" cy="450" fill="url(#ccFloor)" rx="186" ry="32"/>
+  <ellipse cx="200" cy="440" fill="#050B14" opacity="0.55" rx="106" ry="12"/>
+
+  <!-- legs -->
+  <g stroke="#0B1220" stroke-width="3">
+    <rect x="156" y="362" width="26" height="54" rx="11" fill="#132135"/>
+    <rect x="218" y="362" width="26" height="54" rx="11" fill="#132135"/>
+  </g>
+  <!-- feet -->
+  <g stroke="#0B1220" stroke-width="3">
+    <rect x="138" y="404" width="64" height="30" rx="14" fill="#16243A"/>
+    <rect x="198" y="404" width="64" height="30" rx="14" fill="#16243A"/>
+  </g>
+  <rect x="146" y="424" width="48" height="5" rx="2.5" fill="#C97A4A" opacity="0.4"/>
+  <rect x="206" y="424" width="48" height="5" rx="2.5" fill="#C97A4A" opacity="0.4"/>
+
+  <!-- arms (asymmetric: left rests at the hip, right is offered) -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M150 258 C 118 270 100 302 114 334" stroke="#0B1220" stroke-width="21"/>
+    <path d="M150 258 C 118 270 100 302 114 334" stroke="url(#ccCreamBody)" stroke-width="15"/>
+    <path d="M252 258 C 282 264 292 292 288 316" stroke="#0B1220" stroke-width="21"/>
+    <path d="M252 258 C 282 264 292 292 288 316" stroke="url(#ccCreamBody)" stroke-width="15"/>
+  </g>
+  <!-- gloves -->
+  <g>
+    <ellipse cx="116" cy="344" rx="16" ry="18" fill="url(#ccCream)" stroke="#0B1220" stroke-width="3"/>
+    <path d="M104 338 Q 114 334 122 340" fill="none" stroke="#0B1220" stroke-width="2" opacity="0.45"/>
+    <ellipse cx="290" cy="326" rx="16" ry="18" fill="url(#ccCream)" stroke="#0B1220" stroke-width="3"/>
+    <path d="M278 320 Q 288 316 296 322" fill="none" stroke="#0B1220" stroke-width="2" opacity="0.45"/>
+  </g>
+  <!-- cuffs -->
+  <ellipse cx="115" cy="330" rx="10.5" ry="4.2" transform="rotate(30 115 330)" fill="none" stroke="url(#ccCopper)" stroke-width="4"/>
+  <ellipse cx="288" cy="312" rx="10.5" ry="4.2" transform="rotate(-24 288 312)" fill="none" stroke="url(#ccCopper)" stroke-width="4"/>
+
+  <!-- body -->
+  <path d="M136 254 Q 136 232 158 232 L 242 232 Q 264 232 264 254 L 256 370 Q 255 386 239 386 L 161 386 Q 145 386 144 370 Z"
+        fill="url(#ccCreamBody)" stroke="#0B1220" stroke-width="3"/>
+  <path d="M160 240 Q 200 249 240 240" fill="none" stroke="#C4B398" stroke-width="2" opacity="0.65"/>
+
+  <!-- waistcoat -->
+  <path d="M166 246 L 234 246 L 238 362 Q 238 374 226 374 L 174 374 Q 162 374 162 362 Z"
+        fill="url(#ccPanel)" stroke="#08111F" stroke-width="2"/>
+  <path d="M184 246 L 200 296 L 216 246" fill="none" stroke="#F2E9D8" stroke-width="1.4" opacity="0.22"/>
+  <path d="M168 262 L 184 252" stroke="#F2E9D8" stroke-width="1.2" opacity="0.14"/>
+  <path d="M232 252 L 216 262" fill="none" stroke="#F2E9D8" stroke-width="1.2" opacity="0.14"/>
+  <path d="M214 256 L 232 256 L 222 268 Z" fill="url(#ccCopper)" opacity="0.95"/>
+  <g fill="url(#ccCopper)" stroke="#8C4A29" stroke-width="1">
+    <circle cx="200" cy="312" r="4"/>
+    <circle cx="200" cy="332" r="4"/>
+    <circle cx="200" cy="352" r="4"/>
+  </g>
+  <circle class="cc-lamp" cx="228" cy="286" r="4.5" fill="url(#ccLamp)"/>
+
+  <!-- collar and bow tie -->
+  <rect x="184" y="200" width="32" height="34" rx="10" fill="#0F1B2C" stroke="#0B1220" stroke-width="2"/>
+  <path d="M176 226 L 196 224 L 190 236 L 174 238 Z" fill="#F2E9D8" opacity="0.92"/>
+  <path d="M224 226 L 204 226 L 210 238 L 226 236 Z" fill="#F2E9D8" opacity="0.92"/>
+  <path d="M188 230 L 150 212 Q 138 236 150 256 L 188 246 Z" fill="url(#ccCopper)" stroke="#8C4A29" stroke-width="1.5"/>
+  <path d="M212 230 L 250 212 Q 262 236 250 256 L 212 246 Z" fill="url(#ccCopper)" stroke="#8C4A29" stroke-width="1.5"/>
+  <rect x="187" y="222" width="26" height="26" rx="8" fill="url(#ccCopper)" stroke="#8C4A29" stroke-width="1.5"/>
+  <path d="M195 230 L 205 230" stroke="#FFD5B4" stroke-width="1.6" opacity="0.7" stroke-linecap="round"/>
+
+  <!-- head -->
+  <rect x="104" y="64" width="192" height="144" rx="42" fill="url(#ccCream)" stroke="#0B1220" stroke-width="3"/>
+  <path d="M128 88 Q 200 66 272 88" fill="none" stroke="#FFFFFF" stroke-width="5" opacity="0.32" stroke-linecap="round"/>
+
+  <!-- ear bolts -->
+  <g stroke="#0B1220" stroke-width="2">
+    <rect x="92" y="120" width="15" height="38" rx="7.5" fill="url(#ccCopper)"/>
+    <rect x="293" y="120" width="15" height="38" rx="7.5" fill="url(#ccCopper)"/>
+  </g>
+  <circle cx="99" cy="139" r="2.6" fill="#0B1220" opacity="0.55"/>
+  <circle cx="300" cy="139" r="2.6" fill="#0B1220" opacity="0.55"/>
+
+  <!-- antenna -->
+  <path d="M200 66 L 200 38" stroke="#0B1220" stroke-width="6" stroke-linecap="round"/>
+  <path d="M200 66 L 200 40" stroke="#C97A4A" stroke-width="2.4" stroke-linecap="round"/>
+  <rect x="189" y="58" width="22" height="9" rx="4" fill="url(#ccCopper)" stroke="#8C4A29" stroke-width="1.2"/>
+  <circle class="cc-antenna" cx="200" cy="28" r="8.5" fill="url(#ccCopper)" stroke="#8C4A29" stroke-width="1.6"/>
+  <circle cx="197" cy="25" r="2.4" fill="#FFE3CB" opacity="0.8"/>
+
+  <!-- faceplate -->
+  <rect x="118" y="82" width="164" height="104" rx="28" fill="url(#ccFace)" stroke="#060C16" stroke-width="2"/>
+  <rect x="125" y="89" width="150" height="90" rx="22" fill="none" stroke="#F2E9D8" stroke-width="1" opacity="0.09"/>
+
+  <!-- brows: one raised, one level -->
+  <g class="cc-brow cc-brow--left">
+    <rect x="136" y="96" width="42" height="5" rx="2.5" fill="#E9AE85" opacity="0.9" transform="rotate(-11 157 98)"/>
+  </g>
+  <g class="cc-brow cc-brow--right">
+    <rect x="222" y="100" width="42" height="5" rx="2.5" fill="#E9AE85" opacity="0.9" transform="rotate(2 243 102)"/>
+  </g>
+
+  <!-- eyes: deliberate slight asymmetry -->
+  <g class="cc-eye cc-eye--left">
+    <circle cx="158" cy="134" r="25" fill="#091120" stroke="url(#ccCopper)" stroke-width="4.5"/>
+    <circle class="cc-iris" cx="158" cy="134" r="14" fill="url(#ccIris)" opacity="0.5"/>
+    <circle class="cc-pupil" cx="156" cy="135" r="7" fill="#2A1409"/>
+    <circle cx="151" cy="127" r="3.2" fill="#FFF6EA" opacity="0.9"/>
+  </g>
+  <g class="cc-eye cc-eye--right">
+    <circle cx="242" cy="134" r="23" fill="#091120" stroke="url(#ccCopper)" stroke-width="4.5"/>
+    <circle class="cc-iris" cx="242" cy="134" r="13" fill="url(#ccIris)" opacity="0.5"/>
+    <circle class="cc-pupil" cx="243" cy="134" r="6.5" fill="#2A1409"/>
+    <circle cx="236" cy="127" r="3" fill="#FFF6EA" opacity="0.9"/>
+    <path d="M219 125 Q 243 112 266 125 L 266 104 L 219 104 Z" fill="#091120"/>
+    <path d="M219 125 Q 243 112 266 125" fill="none" stroke="url(#ccCopper)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- mouth: a polite, slightly lopsided line -->
+  <g class="cc-mouth">
+    <path d="M188 170 Q 200 174 212 168" fill="none" stroke="#E9AE85" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <!-- cheek rivets -->
+  <circle cx="130" cy="176" r="2.2" fill="#E9AE85" opacity="0.35"/>
+  <circle cx="270" cy="176" r="2.2" fill="#E9AE85" opacity="0.35"/>
+</svg>

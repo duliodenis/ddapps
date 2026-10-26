@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1220">
+    <title>Chat with ChatChap — Artificially-Flavored Super Intelligence.</title>
+    <link rel="icon" href="../assets/icon-512.png" sizes="512x512">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/brand.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script type="module" src="../js/app.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <a class="brand" href="../" aria-label="ChatChap home"><span class="brand-avatar" aria-hidden="true"></span><span class="wordmark">ChatChap<sup>™</sup></span></a>
+        <div class="engine-status"><span class="status-dot" aria-hidden="true"></span><span id="status" role="status">Checking browser…</span></div>
+      </header>
+      <main class="main">
+        <div id="scroll-area" class="scroll-area" tabindex="0" role="region" aria-label="Chat conversation">
+          <div class="conversation-width">
+            <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+              <p class="eyebrow">A ddApps AI Labs experiment</p>
+              <h1 id="welcome-title">Artificially-Flavored<br><em>Super Intelligence.</em></h1>
+              <p class="claim">Aced the Turing Test in 7 Prompts.<span> An in-character claim, not a verified benchmark.</span></p>
+              <p class="welcome-copy">A little help with a question, a first draft, or a tricky idea.<br> Start a conversation. The thinking happens on your device.</p>
+            </section>
+            <section id="model-panel" class="model-panel" aria-labelledby="model-title">
+              <div class="panel-heading"><h2 id="model-title">Meet your local assistant</h2><span class="badge">On-device AI</span></div>
+              <select id="variant" hidden disabled aria-label="Model"><option value="liquid">Liquid AI — LFM2.5-1.2B-Instruct</option></select>
+              <p id="model-resources">LFM2.5-1.2B-Instruct by Liquid AI. Approximately 761 MB for model graph and weights, plus runtime/tokenizer assets and working memory.</p>
+              <p class="hint">Powered by Liquid AI. <a href="https://huggingface.co/LiquidAI/LFM2.5-1.2B-Instruct/blob/main/LICENSE">Model license</a>.</p>
+              <p>Model weights, runtime, and tokenizer files download from third-party hosts after you select Load. Prompts are processed on this device.</p>
+              <details class="device-details"><summary>Device requirements</summary><p>Use localhost or HTTPS and a WebGPU browser with shader-f16 support, such as a recent desktop Chrome or Edge. Sufficient CPU/GPU memory is required; download size is not a memory requirement. Performance varies by device.</p></details>
+              <button id="load" type="button" disabled>Load ChatChap <span aria-hidden="true">↗</span></button>
+              <div id="loading-progress" hidden>
+                <progress id="progress" aria-label="Model download and initialization" max="1"></progress>
+                <p id="progress-detail">Preparing runtime…</p>
+                <p class="hint">First initialization may take several minutes. Progress includes download and GPU setup.</p>
+              </div>
+            </section>
+            <section aria-labelledby="conversation-title">
+              <h2 id="conversation-title" class="sr-only">Conversation</h2>
+              <ol id="messages" class="messages"></ol>
+            </section>
+          </div>
+        </div>
+        <button id="latest" class="latest secondary" type="button" hidden>Latest reply <span aria-hidden="true">↓</span></button>
+      </main>
+      <div class="composer-area">
+        <div class="conversation-width">
+          <div id="error-panel" class="error-panel" hidden>
+            <p id="error" role="alert"></p>
+            <button id="restart" class="secondary" type="button" hidden>Restart model to retry</button>
+          </div>
+          <p id="context-notice" class="hint" hidden>Earlier messages are still visible, but only recent exchanges fit in the model’s memory.</p>
+          <form id="prompt-form" class="composer">
+            <label for="prompt" class="sr-only">Message ChatChap</label>
+            <textarea id="prompt" rows="2" maxlength="1000" required disabled placeholder="Load ChatChap to start a conversation…" aria-describedby="prompt-help"></textarea>
+            <div class="composer-bottom"><p id="prompt-help">Enter to send · Shift+Enter for a new line</p><button id="send" type="submit" disabled>Send <span aria-hidden="true">↑</span></button></div>
+          </form>
+          <p class="chat-notice">Answers can be inaccurate. This chat is not saved; refreshing clears it.</p>
+          <p id="metrics" class="metrics"></p>
+          <footer><span>An experiment from ddApps AI Labs.</span><span>Local processing. No account required.</span></footer>
+        </div>
+      </div>
+    </div>
+    <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    <noscript><p class="noscript">Enable JavaScript to use ChatChap’s local model.</p></noscript>
+  </body>
+</html>
