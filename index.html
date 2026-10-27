@@ -13,14 +13,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ddApps">
 <meta property="og:title" content="ddApps — Dulio Denis">
-<meta property="og:description" content="Privacy-oriented software, built to last. The independent studio of Dulio Denis — HumanCheck, Eira, Jix, GameZone Arcade, TextStar, and Nimlo, engineered in New York City.">
+<meta property="og:description" content="Privacy-oriented software, built to last. The independent studio of Dulio Denis — HumanCheck, ChatChap, Eira, Jix, GameZone Arcade, TextStar, and Nimlo, engineered in New York City.">
 <meta property="og:url" content="https://ddapps.co/">
 <meta property="og:image" content="https://ddapps.co/img/ddApps.png">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddApps — Dulio Denis">
-<meta name="twitter:description" content="Privacy-oriented software, built to last. HumanCheck, Eira, Jix, GameZone Arcade, TextStar, and Nimlo — engineered in New York City.">
+<meta name="twitter:description" content="Privacy-oriented software, built to last. HumanCheck, ChatChap, Eira, Jix, GameZone Arcade, TextStar, and Nimlo — engineered in New York City.">
 <meta name="twitter:image" content="https://ddapps.co/img/ddApps.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -254,14 +254,11 @@
 
 	.tile { grid-column: span 2; }
 
-	.tile-featured { grid-column: 1 / -1; }
-
 	.tile-primary { grid-column: span 3; }
 
 	@media (max-width: 640px) {
 		.grid { grid-template-columns: 1fr; }
 		.tile,
-		.tile-featured,
 		.tile-primary { grid-column: auto; }
 	}
 
@@ -501,13 +498,20 @@
 		<p class="label mono">Selected work</p>
 		<div class="grid">
 
-			<button class="tile tile-featured" data-dialog="dlg-humancheck">
+			<button class="tile tile-primary" data-dialog="dlg-humancheck">
 				<span class="tile-meta">
 					<span class="domain mono">ddapps.co/humancheck</span>
 					<span class="status mono">App Store</span>
 				</span>
 				<h2>HumanCheck</h2>
 				<p class="tag">Two-factor authentication for your friends to make sure it&rsquo;s really them.</p>
+				<span class="open mono">Read more →</span>
+			</button>
+
+			<button class="tile tile-primary" data-dialog="dlg-chatchap">
+				<span class="domain mono">ddapps.co/chatchap</span>
+				<h2>ChatChap</h2>
+				<p class="tag">A private AI chatbot with character, running locally in your browser.</p>
 				<span class="open mono">Read more →</span>
 			</button>
 
@@ -580,6 +584,20 @@
 	</p>
 	<div class="dialog-actions">
 		<a class="visit mono" href="https://ddapps.co/humancheck/">Visit site →</a>
+		<button class="close mono" data-close>Close</button>
+	</div>
+</dialog>
+
+<dialog id="dlg-chatchap" aria-labelledby="dlg-chatchap-title">
+	<span class="domain mono">ddapps.co/chatchap</span>
+	<h2 id="dlg-chatchap-title">ChatChap</h2>
+	<p>
+		An exceptionally confident AI assistant. Brilliantly helpful, occasionally
+		bewildered. ChatChap runs a compact language model directly in your browser, privately and
+		with no account or cloud inference. Artificially-Flavored Super Intelligence.
+	</p>
+	<div class="dialog-actions">
+		<a class="visit mono" href="https://ddapps.co/chatchap/">Visit site →</a>
 		<button class="close mono" data-close>Close</button>
 	</div>
 </dialog>
